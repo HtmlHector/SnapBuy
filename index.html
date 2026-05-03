@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Jellyfish Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Courier New", monospace;
+            background: radial-gradient(circle at top, #1a1a2e, #0f3460, #16213e);
+            color: #eaeaea;
+        }
+        header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            border-bottom: 2px solid #00adb5;
+        }
+        h1 {
+            margin: 0;
+            letter-spacing: 2px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        button {
+            background: #00adb5;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #fff;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🪼 Cosmic Jellyfish Dashboard</h1>
+    <p>Status: <span id="status">Initializing...</span></p>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h3>Random Quote</h3>
+        <p id="quote">Loading...</p>
+        <button onclick="newQuote()">New Quote</button>
+    </div>
+
+    <div class="card">
+        <h3>Color Generator</h3>
+        <div id="colorBox" style="height:100px;border-radius:8px;"></div>
+        <button onclick="randomColor()">Change Color</button>
+    </div>
+
+    <div class="card">
+        <h3>Mini Counter</h3>
+        <p id="count">0</p>
+        <button onclick="increment()">+</button>
+    </div>
+</div>
+
+<footer>
+    Generated for no reason at all ✨
+</footer>
+
+<script>
+    const quotes = [
+        "Reality is just a poorly optimized simulation.",
+        "Debugging is like being a detective in a crime movie.",
+        "Code never lies, comments sometimes do.",
+        "Stay weird, it works."
+    ];
+
+    function newQuote() {
+        const q = quotes[Math.floor(Math.random() * quotes.length)];
+        document.getElementById("quote").textContent = q;
+    }
+
+    function randomColor() {
+        const color = "#" + Math.floor(Math.random()*16777215).toString(16);
+        document.getElementById("colorBox").style.background = color;
+    }
+
+    let count = 0;
+    function increment() {
+        count++;
+        document.getElementById("count").textContent = count;
+    }
+
+    document.getElementById("status").textContent = "Online 🚀";
+    newQuote();
+    randomColor();
+</script>
+
+</body>
+</html>
